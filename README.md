@@ -1,9 +1,5 @@
-## 猫咪信息管理平台 - CatInfoManageSystem
+## 实时字幕生成与翻译系统（前端） - realtime_asr_tranlation_system_frontend
 
-一个数据库系统的软件，猫咪的信息管理平台
+实时字幕生成与翻译系统的前端程序，使用Godot编写。
 
-拥有管理猫咪信息、地点、种类与打卡功能
-
-使用http协议与后端服务器进行通讯。
-
-内部有多种UI设计以及http通讯的实例，可提供给Godot初学者学习
+The frontend program of the Real-time ASR and Translation System, written in Godot.
