@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://mainPage/Theme.tres" type="Theme" id=1]
+[ext_resource path="res://MiSans/DefaultFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://mainPage/TopBar.gd" type="Script" id=3]
+
+[node name="TopBar" type="Panel"]
+anchor_right = 1.0
+margin_bottom = 30.0
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+
+[node name="HExpand" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+margin_right = 1.0
+margin_bottom = 32.0
+alignment = 2
+
+[node name="ExitButton" type="Button" parent="HExpand"]
+margin_left = 983.0
+margin_right = 1025.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 2 )
+text = "退出"
+flat = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 20.0
+margin_right = 166.0
+margin_bottom = 32.0
+custom_constants/separation = 10
+
+[node name="SettingButton" type="MenuButton" parent="HBoxContainer"]
+margin_right = 42.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 2 )
+text = "设置"
+
+[node name="StartButton" type="Button" parent="HBoxContainer"]
+margin_left = 52.0
+margin_right = 94.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 2 )
+text = "启动"
+flat = true
+
+[node name="InfoButton" type="Button" parent="HBoxContainer"]
+margin_left = 104.0
+margin_right = 146.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 2 )
+text = "关于"
+flat = true
+
+[node name="StopButton" type="Button" parent="HBoxContainer"]
+visible = false
+margin_left = 156.0
+margin_right = 198.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 2 )
+text = "停止"
+flat = true
+
+[connection signal="pressed" from="HExpand/ExitButton" to="." method="_on_ExitButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/InfoButton" to="." method="_on_InfoButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/StopButton" to="." method="_on_StopButton_pressed"]

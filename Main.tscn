@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://main.gd" type="Script" id=1]
+[ext_resource path="res://mainPage/TopBar.tscn" type="PackedScene" id=2]
+[ext_resource path="res://RichTextLabel.gd" type="Script" id=3]
+[ext_resource path="res://configWindow.tscn" type="PackedScene" id=4]
+[ext_resource path="res://AsrConfigWindow.tscn" type="PackedScene" id=5]
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.298039, 0.298039, 0.298039, 0.392157 )
+
+[node name="TopBar" parent="." instance=ExtResource( 2 )]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 30.0
+focus_mode = 2
+meta_underlined = false
+scroll_following = true
+selection_enabled = true
+script = ExtResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="WindowDialog" type="AcceptDialog" parent="."]
+margin_left = -9.0
+margin_top = 23.0
+margin_right = 858.0
+margin_bottom = 197.0
+window_title = "关于应用"
+dialog_text = "本应用为视频实时字幕生成与翻译系统的显示前端，可以连接系统后端使用。
+点击 设置 按钮进行配置修改；
+点击 启动 按钮连接后端以显示实时字幕；
+点击 关于 按钮查看本窗口，获取应用信息。"
+dialog_autowrap = true
+
+[node name="ConfigDialog" parent="." instance=ExtResource( 4 )]
+
+[node name="AsrConfigDialog" parent="." instance=ExtResource( 5 )]
+
+[connection signal="asr_config" from="TopBar" to="." method="_on_TopBar_asr_config"]
+[connection signal="config" from="TopBar" to="." method="_on_TopBar_config"]
+[connection signal="info" from="TopBar" to="." method="_on_TopBar_info"]
+[connection signal="start" from="TopBar" to="." method="_on_TopBar_start"]
+[connection signal="stop" from="TopBar" to="." method="_on_TopBar_stop"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
